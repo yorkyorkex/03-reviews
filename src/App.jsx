@@ -31,6 +31,11 @@ const App = () => {
       return checkNumber(newIndex)
     })
   }
+
+  const randomPerson = () => {
+    setIndex(Math.floor(Math.random() * people.length))
+  }
+
   return (
     <main>
       <article className="review">
@@ -43,21 +48,31 @@ const App = () => {
         <h4 className="author">{name}</h4>
         <p className="job">{job}</p>
         <p className="info">{text}</p>
+        <div className="btn-container">
+          <button
+            className="prev-btn"
+            onClick={
+              nextPerson /* () => setIndex(index ? index - 1 : people.length - 1) */
+            }
+          >
+            <FaChevronCircleLeft />
+          </button>
+          <button
+            className="next-btn"
+            onClick={
+              prevPerson /* () => setIndex(index < people.length - 1 ? index + 1 : 0) */
+            }
+          >
+            <FaChevronCircleRight />
+          </button>
+        </div>
         <button
-          className="prev-btn"
+          className="btn btn-hipster"
           onClick={
-            nextPerson /* () => setIndex(index ? index - 1 : people.length - 1) */
+            randomPerson /* () => setIndex(Math.floor(Math.random() * people.length)) */
           }
         >
-          <FaChevronCircleLeft />
-        </button>
-        <button
-          className="next-btn"
-          onClick={
-            prevPerson /* () => setIndex(index < people.length - 1 ? index + 1 : 0) */
-          }
-        >
-          <FaChevronCircleRight />
+          surprise me
         </button>
       </article>
     </main>
