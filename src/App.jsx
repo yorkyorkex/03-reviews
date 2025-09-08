@@ -33,7 +33,11 @@ const App = () => {
   }
 
   const randomPerson = () => {
-    setIndex(Math.floor(Math.random() * people.length))
+    let randomNumber = Math.floor(Math.random() * people.length)
+    if (randomNumber === index) {
+      randomNumber = index + 1
+    }
+    setIndex(checkNumber(randomNumber))
   }
 
   return (
