@@ -8,6 +8,24 @@ import {
 const App = () => {
   const [index, setIndex] = useState(0)
   const { name, job, image, text } = people[index]
+  const nextPerson = () => {
+    setIndex((currentIndex) => {
+      let newIndex = currentIndex + 1
+      if (newIndex > people.length - 1) {
+        newIndex = 0
+      }
+      return newIndex
+    })
+  }
+  const prevPerson = () => {
+    setIndex((currentIndex) => {
+      let newIndex = currentIndex - 1
+      if (newIndex < 0) {
+        newIndex = people.length - 1
+      }
+      return newIndex
+    })
+  }
   return (
     <main>
       <article className="review">
@@ -22,13 +40,17 @@ const App = () => {
         <p className="info">{text}</p>
         <button
           className="prev-btn"
-          onClick={() => setIndex(index ? index - 1 : people.length - 1)}
+          onClick={
+            nextPerson /* () => setIndex(index ? index - 1 : people.length - 1) */
+          }
         >
           <FaChevronCircleLeft />
         </button>
         <button
           className="next-btn"
-          onClick={() => setIndex(index < people.length - 1 ? index + 1 : 0)}
+          onClick={
+            prevPerson /* () => setIndex(index < people.length - 1 ? index + 1 : 0) */
+          }
         >
           <FaChevronCircleRight />
         </button>
